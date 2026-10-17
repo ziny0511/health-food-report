@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>건기식 검색 트렌드</title>
+<meta name="description" content="네이버 데이터랩 검색어 트렌드로 본 건강기능식품 카테고리별 관심도 추이">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --bg:#f7f6f2; --surface:#ffffff; --surface-2:#f0eee8; --ink:#1c1d1f; --ink-2:#55585e; --ink-3:#8a8d93;
+  --line:#e2dfd6; --grid:#ecebe5; --axis:#c3c2b7; --accent:#2f6b4f; --accent-soft:#e3efe8;
+  --up:#2a78d6; --down:#e34948; --up-ink:#1c5cab; --down-ink:#b8312f; --ref:#b9b7ae;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.04);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141516; --surface:#1c1d20; --surface-2:#24262a; --ink:#ecebe7; --ink-2:#b4b6ba; --ink-3:#7f8288;
+    --line:#2f3136; --grid:#2a2c30; --axis:#3d3f44; --accent:#7cc2a0; --accent-soft:#1f3229;
+    --up:#3987e5; --down:#e66767; --up-ink:#86b6ef; --down-ink:#f09a9a; --ref:#55575c; --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141516; --surface:#1c1d20; --surface-2:#24262a; --ink:#ecebe7; --ink-2:#b4b6ba; --ink-3:#7f8288;
+  --line:#2f3136; --grid:#2a2c30; --axis:#3d3f44; --accent:#7cc2a0; --accent-soft:#1f3229;
+  --up:#3987e5; --down:#e66767; --up-ink:#86b6ef; --down-ink:#f09a9a; --ref:#55575c; --shadow:none;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px;line-height:1.7;word-break:keep-all;overflow-wrap:break-word}
+a{color:var(--accent);text-decoration:none}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header.top{border-bottom:1px solid var(--line);background:var(--surface)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:8px}
+.brand{font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.brand span{color:var(--accent)}
+.navr{display:flex;gap:6px}
+.pill{background:none;border:1px solid var(--line);color:var(--ink-2);border-radius:999px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer;white-space:nowrap}
+.pill.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.hero{padding:44px 0 8px}
+.eyebrow{font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.04em}
+h1{font-size:clamp(28px,4.5vw,40px);line-height:1.25;letter-spacing:-.02em;margin:8px 0 10px}
+.lead{color:var(--ink-2);margin:0 0 6px}
+.note{font-size:13px;color:var(--ink-3)}
+section{padding:36px 0 4px}
+h2{font-size:21px;letter-spacing:-.01em;margin:0 0 6px}
+.sub{font-size:14px;color:var(--ink-2);margin:0 0 16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
+.callout{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 12px 12px 0;padding:14px 18px;margin:20px 0 0}
+.callout b{font-variant-numeric:tabular-nums}
+/* diverging bars */
+.div-row{display:grid;grid-template-columns:84px 1fr;align-items:center;gap:12px;height:38px;position:relative}
+.div-row .lbl{font-size:14px;font-weight:600;text-align:right}
+.div-track{position:relative;height:100%}
+.div-zero{position:absolute;top:4px;bottom:4px;width:1px;background:var(--axis)}
+.div-bar{position:absolute;top:11px;height:16px;background:var(--up)}
+.div-bar.neg{background:var(--down)}
+.div-bar.pos{border-radius:0 4px 4px 0}
+.div-bar.neg{border-radius:4px 0 0 4px}
+.div-val{position:absolute;top:7px;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink-2);white-space:nowrap}
+.div-hit{position:absolute;inset:0;cursor:default}
+.div-axis{display:grid;grid-template-columns:84px 1fr;gap:12px;font-size:12px;color:var(--ink-3)}
+.div-axis .t{position:relative;height:18px}
+.div-axis .t span{position:absolute;transform:translateX(-50%)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-2);margin-top:12px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+/* small multiples */
+.sm{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.sm .card{padding:16px 18px 10px}
+.sm-hd{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.sm-hd h3{margin:0;font-size:16px}
+.sm-hd .big{font-size:22px;font-weight:700;letter-spacing:-.02em}
+.delta{font-size:13px;font-weight:600;white-space:nowrap}
+.delta.up{color:var(--up-ink)} .delta.down{color:var(--down-ink)} .delta.flat{color:var(--ink-3)}
+.sm-meta{font-size:12px;color:var(--ink-3);margin:2px 0 6px}
+.sm svg{display:block;width:100%;height:120px;overflow:visible}
+.kw{font-size:12px;color:var(--ink-3);margin-top:6px}
+/* tooltip */
+.tip{position:fixed;z-index:20;pointer-events:none;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;
+  padding:8px 10px;font-size:12px;line-height:1.5;box-shadow:0 4px 16px rgba(0,0,0,.12);opacity:0;transition:opacity .08s;min-width:120px}
+.tip b{font-variant-numeric:tabular-nums}
+.tip .k{color:var(--ink-3)}
+/* table */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:14px}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+th{font-size:12px;color:var(--ink-3);background:var(--surface-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+details summary{cursor:pointer;color:var(--ink-2);font-size:14px;margin-bottom:10px}
+.method li{margin-bottom:4px}
+footer{margin-top:56px;padding:28px 0 48px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3)}
+.err{color:var(--down-ink)}
+@media (max-width:720px){ .div-row,.div-axis{grid-template-columns:64px 1fr} .div-row .lbl{font-size:13px} }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./">건기식 <span>위클리</span></a>
+  <div class="navr">
+    <a class="pill" href="./">주간 리포트</a>
+    <a class="pill on" href="trends.html">검색 트렌드</a>
+    <button class="pill" id="themeBtn" type="button">테마</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+  <div class="hero">
+    <div class="eyebrow">NAVER DATALAB · SEARCH TREND</div>
+    <h1>건기식 카테고리 검색 트렌드</h1>
+    <p class="lead" id="period">데이터를 불러오는 중입니다.</p>
+    <p class="note">네이버 검색량을 0~100 상대지수로 받은 뒤, 모든 요청에 '비타민' 기준 그룹을 넣어 카테고리끼리 같은 척도로 맞췄습니다.</p>
+    <div class="callout" id="callout" hidden></div>
+  </div>
+
+  <section>
+    <h2>관심 점유율 변화 (최근 12주, 전년 대비)</h2>
+    <p class="sub">카테고리 검색량 ÷ 비타민 검색량. 네이버 검색 전체가 줄거나 늘어난 효과를 걷어낸 값입니다. 0보다 크면 다른 건기식보다 관심이 커졌다는 뜻입니다.</p>
+    <div class="card">
+      <div id="divChart"></div>
+      <div class="legend"><span><i style="background:var(--up)"></i>점유율 상승</span><span><i style="background:var(--down)"></i>점유율 하락</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>카테고리별 2년 추이</h2>
+    <p class="sub">선은 주간 관심 점유율(비타민=100), 점선은 1년 전 시점입니다. 큰 숫자는 최근 12주 평균입니다. 선 위에 마우스를 올리면 주별 값이 보입니다.</p>
+    <div class="sm" id="sm"></div>
+  </section>
+
+  <section>
+    <h2>표로 보기</h2>
+    <div class="tbl-wrap"><table id="tbl"></table></div>
+    <p class="note" style="margin-top:8px">검색지수는 기준 그룹으로 환산한 값이라 100을 넘을 수 있습니다. 주간 값은 연휴(추석, 한글날 등) 영향을 크게 받으니 4주·12주 비교를 우선 보세요.</p>
+  </section>
+
+  <section>
+    <details>
+      <summary>카테고리별 키워드 그룹과 계산 방법</summary>
+      <div class="card"><ul class="method" id="method"></ul></div>
+    </details>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p>출처: 네이버 데이터랩 검색어 트렌드(NAVER API HUB). 검색 관심도는 판매량이 아닙니다.</p>
+</div></footer>
+
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var root=document.documentElement, KEY='hf-theme';
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  var saved=get(KEY); if(saved) root.setAttribute('data-theme',saved);
+  document.getElementById('themeBtn').addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    var next=cur==='dark'?'light':'dark'; root.setAttribute('data-theme',next); set(KEY,next);
+  });
+
+  var tip=document.getElementById('tip');
+  function showTip(html,x,y){tip.innerHTML=html;tip.style.opacity=1;
+    var w=tip.offsetWidth,h=tip.offsetHeight,px=x+14,py=y-h-10;
+    if(px+w>innerWidth-8)px=x-w-14; if(py<8)py=y+14; tip.style.left=px+'px';tip.style.top=py+'px'}
+  function hideTip(){tip.style.opacity=0}
+
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function sgn(x){return x==null?'–':(x>0?'+':'')+x.toFixed(1)+'%'}
+  function md(d){var p=d.split('-');return (+p[0])+'.'+(+p[1])+'.'+(+p[2])}
+  function deltaCls(x){return x==null||Math.abs(x)<1?'flat':(x>0?'up':'down')}
+  function arrow(x){return x==null||Math.abs(x)<1?'→':(x>0?'▲':'▼')}
+
+  fetch('data/trend-latest.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(render)
+    .catch(function(e){document.getElementById('period').innerHTML='<span class="err">데이터를 불러오지 못했습니다 ('+esc(e.message)+').</span>'});
+
+  function render(d){
+    var A=d.anchor.groupName, anchor=d.series[A].map(function(p){return p.value});
+    var lastWeek=d.summary[0].week;
+    document.getElementById('period').textContent='기간 '+md(d.startDate)+' ~ '+md(d.endDate)+' (주간 104주) · 최신 주차 '+md(lastWeek)+' 시작 주';
+
+    var sorted=d.summary.slice().sort(function(a,b){return b.shareYoy12w-a.shareYoy12w});
+    var ups=sorted.filter(function(s){return s.shareYoy12w>=1}).map(function(s){return s.category+' '+sgn(s.shareYoy12w)});
+    var downs=sorted.filter(function(s){return s.shareYoy12w<=-1}).reverse().map(function(s){return s.category+' '+sgn(s.shareYoy12w)});
+    var c=document.getElementById('callout'); c.hidden=false;
+    c.innerHTML='비타민 기준 검색량은 최근 12주 평균이 전년보다 <b>'+sgn(d.anchorYoy12w)+'</b>입니다. 네이버 건기식 검색 전체가 줄었다는 뜻이라 원지수만 보면 모든 카테고리가 떨어져 보입니다. 점유율로 보면 '+
+      (ups.length?'<b>'+esc(ups.join(', '))+'</b>는 상대적으로 관심이 커졌고, ':'')+(downs.length?'<b>'+esc(downs.join(', '))+'</b>는 관심이 줄었습니다.':'');
+
+    // diverging bar chart
+    var vals=sorted.map(function(s){return s.shareYoy12w}), m=Math.max(5,Math.ceil(Math.max.apply(null,vals.map(Math.abs))/5)*5);
+    var pos=function(v){return (v+m)/(2*m)*100};
+    var html='';
+    sorted.forEach(function(s){
+      var v=s.shareYoy12w, z=pos(0), x=pos(v), neg=v<0;
+      var left=Math.min(z,x), w=Math.abs(x-z);
+      var valPos=neg?'right:calc('+(100-left)+'% + 6px)':'left:calc('+(left+w)+'% + 6px)';
+      html+='<div class="div-row"><div class="lbl">'+esc(s.category)+'</div><div class="div-track">'+
+        '<div class="div-zero" style="left:'+z+'%"></div>'+
+        '<div class="div-bar '+(neg?'neg':'pos')+'" style="left:'+left+'%;width:'+w+'%"></div>'+
+        '<div class="div-val" style="'+valPos+'">'+sgn(v)+'</div>'+
+        '<div class="div-hit" data-cat="'+esc(s.category)+'"></div></div></div>';
+    });
+    var ticks=[-m,-m/2,0,m/2,m];
+    html+='<div class="div-axis"><div></div><div class="t">'+ticks.map(function(t){return '<span style="left:'+pos(t)+'%">'+(t>0?'+':'')+t+'%</span>'}).join('')+'</div></div>';
+    var dc=document.getElementById('divChart'); dc.innerHTML=html;
+    dc.querySelectorAll('.div-hit').forEach(function(el){
+      var s=d.summary.filter(function(x){return x.category===el.dataset.cat})[0];
+      el.addEventListener('mousemove',function(e){showTip('<b>'+esc(s.category)+'</b><br><span class="k">점유율 전년비</span> <b>'+sgn(s.shareYoy12w)+'</b><br><span class="k">검색량 전년비(12주)</span> <b>'+sgn(s.yoy12w)+'</b><br><span class="k">점유율(12주)</span> <b>'+s.share12w.toFixed(1)+'</b>',e.clientX,e.clientY)});
+      el.addEventListener('mouseleave',hideTip);
+    });
+
+    // small multiples (sorted by current share, desc)
+    var sm=document.getElementById('sm'); sm.innerHTML='';
+    var bySize=d.summary.slice().sort(function(a,b){return b.share12w-a.share12w});
+    bySize.forEach(function(s){
+      var raw=d.series[s.category], share=raw.map(function(p,i){return anchor[i]?p.value/anchor[i]*100:null});
+      var kw=(d.categories.filter(function(c){return c.groupName===s.category})[0]||{}).keywords||[];
+      var card=document.createElement('div'); card.className='card';
+      card.innerHTML='<div class="sm-hd"><h3>'+esc(s.category)+'</h3><span class="delta '+deltaCls(s.shareYoy12w)+'">'+arrow(s.shareYoy12w)+' 점유율 '+sgn(s.shareYoy12w)+'</span></div>'+
+        '<div class="sm-hd"><span class="big">'+s.share12w.toFixed(1)+'</span><span class="sm-meta">검색량 전년비 '+sgn(s.yoy12w)+' · 전주비 '+sgn(s.wow)+'</span></div>'+
+        '<svg role="img" aria-label="'+esc(s.category)+' 주간 관심 점유율 추이"></svg>'+
+        '<div class="kw">'+esc(kw.join(', '))+'</div>';
+      sm.appendChild(card);
+      drawLine(card.querySelector('svg'),raw,share);
+    });
+
+    function drawLine(svg,raw,share){
+      var W=svg.clientWidth||300,H=120,P={l:30,r:6,t:8,b:20},n=share.length;
+      var clean=share.filter(function(v){return v!=null}), mx=Math.max.apply(null,clean)*1.08, mn=0;
+      var nice=mx>200?100:mx>80?50:mx>40?20:10, top=Math.ceil(mx/nice)*nice;
+      var X=function(i){return P.l+i/(n-1)*(W-P.l-P.r)}, Y=function(v){return P.t+(1-(v-mn)/(top-mn))*(H-P.t-P.b)};
+      var ns='http://www.w3.org/2000/svg', g='';
+      [0,top/2,top].forEach(function(t){g+='<line x1="'+P.l+'" x2="'+(W-P.r)+'" y1="'+Y(t)+'" y2="'+Y(t)+'" stroke="var(--'+(t===0?'axis':'grid')+')" stroke-width="1"/>'+
+        '<text x="'+(P.l-6)+'" y="'+(Y(t)+4)+'" text-anchor="end" font-size="10" fill="var(--ink-3)">'+t+'</text>'});
+      var ly=n-53; if(ly>0) g+='<line x1="'+X(ly)+'" x2="'+X(ly)+'" y1="'+P.t+'" y2="'+(H-P.b)+'" stroke="var(--ref)" stroke-width="1" stroke-dasharray="3 3"/>';
+      // year labels on x axis
+      var seen={}; raw.forEach(function(p,i){var y=p.period.slice(0,4),mo=p.period.slice(5,7);if(mo==='01'&&!seen[y]){seen[y]=1;g+='<text x="'+X(i)+'" y="'+(H-4)+'" text-anchor="middle" font-size="10" fill="var(--ink-3)">'+y+'</text>'}});
+      var dpath=''; share.forEach(function(v,i){if(v==null)return;dpath+=(dpath?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1)});
+      g+='<path d="'+dpath+'" fill="none" stroke="var(--up)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
+      var li=n-1; g+='<circle cx="'+X(li)+'" cy="'+Y(share[li])+'" r="4" fill="var(--up)" stroke="var(--surface)" stroke-width="2"/>';
+      g+='<line class="xh" y1="'+P.t+'" y2="'+(H-P.b)+'" stroke="var(--ink-3)" stroke-width="1" opacity="0"/><circle class="xd" r="4" fill="var(--up)" stroke="var(--surface)" stroke-width="2" opacity="0"/>';
+      g+='<rect x="'+P.l+'" y="0" width="'+(W-P.l-P.r)+'" height="'+H+'" fill="transparent"/>';
+      svg.setAttribute('viewBox','0 0 '+W+' '+H); svg.innerHTML=g;
+      var xh=svg.querySelector('.xh'), xd=svg.querySelector('.xd');
+      svg.addEventListener('mousemove',function(e){
+        var r=svg.getBoundingClientRect(), px=(e.clientX-r.left)*(W/r.width);
+        var i=Math.round((px-P.l)/(W-P.l-P.r)*(n-1)); i=Math.max(0,Math.min(n-1,i)); if(share[i]==null)return;
+        xh.setAttribute('x1',X(i));xh.setAttribute('x2',X(i));xh.setAttribute('opacity',1);
+        xd.setAttribute('cx',X(i));xd.setAttribute('cy',Y(share[i]));xd.setAttribute('opacity',1);
+        showTip('<b>'+md(raw[i].period)+' 주</b><br><span class="k">점유율</span> <b>'+share[i].toFixed(1)+'</b><br><span class="k">검색지수</span> <b>'+raw[i].value.toFixed(1)+'</b>',e.clientX,e.clientY);
+      });
+      svg.addEventListener('mouseleave',function(){xh.setAttribute('opacity',0);xd.setAttribute('opacity',0);hideTip()});
+    }
+
+    // table
+    var t='<thead><tr><th>카테고리</th><th>최신 주 검색지수</th><th>전주비</th><th>4주 평균 대비</th><th>검색량 전년비(4주)</th><th>검색량 전년비(12주)</th><th>점유율(12주)</th><th>점유율 전년비</th></tr></thead><tbody>';
+    sorted.forEach(function(s){t+='<tr><td>'+esc(s.category)+'</td><td>'+s.value.toFixed(1)+'</td><td>'+sgn(s.wow)+'</td><td>'+sgn(s.vs4wAvg)+'</td><td>'+sgn(s.yoy4w)+'</td><td>'+sgn(s.yoy12w)+'</td><td>'+s.share12w.toFixed(1)+'</td><td>'+sgn(s.shareYoy12w)+'</td></tr>'});
+    t+='<tr><td>기준: 비타민</td><td>'+anchor[anchor.length-1].toFixed(1)+'</td><td colspan="3"></td><td>'+sgn(d.anchorYoy12w)+'</td><td>100.0</td><td>–</td></tr></tbody>';
+    document.getElementById('tbl').innerHTML=t;
+
+    // method
+    var ml=d.categories.map(function(c){return '<li><b>'+esc(c.groupName)+'</b>: '+esc(c.keywords.join(', '))+'</li>'}).join('');
+    ml+='<li><b>기준 그룹</b>: '+esc(d.anchor.keywords.join(', '))+'. 요청마다 함께 넣고, 첫 요청의 기준 그룹 합계에 맞춰 나머지 요청 값을 환산합니다.</li>';
+    ml+='<li>점유율 = 카테고리 ÷ 기준 그룹 × 100. 전년비는 최근 12주 평균과 52주 전 같은 12주 평균을 비교합니다.</li>';
+    document.getElementById('method').innerHTML=ml;
+  }
+})();
+</script>
+</body>
+</html>
