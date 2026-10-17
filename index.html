@@ -3,112 +3,62 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>주간 건강식품 신제품 리포트</title>
-<meta name="description" content="지난주 한국 건강기능식품 신제품·규제·시장 동향 주간 리포트 (2026년 10월 5일~10월 11일)">
+<title>건기식 위클리</title>
+<meta name="description" content="한국 건강기능식품 신제품·규제·시장 동향 주간 리포트 아카이브">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 :root{
   --bg:#f7f6f2; --surface:#ffffff; --surface-2:#f0eee8; --ink:#1c1d1f; --ink-2:#55585e; --ink-3:#8a8d93;
-  --line:#e2dfd6; --accent:#2f6b4f; --accent-soft:#e3efe8; --warn:#9a5b13; --warn-soft:#f6ebdc;
-  --chip-gut:#e4ecf7; --chip-gut-ink:#2b4f80; --chip-eye:#efe6f6; --chip-eye-ink:#5e3b7d;
-  --chip-sleep:#e6eef0; --chip-sleep-ink:#2e5a63; --chip-beauty:#f8e6ea; --chip-beauty-ink:#8a3049;
-  --chip-vit:#f6f0d9; --chip-vit-ink:#6d5a12;
+  --line:#e2dfd6; --accent:#2f6b4f; --accent-soft:#e3efe8;
   --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.04);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#141516; --surface:#1c1d20; --surface-2:#24262a; --ink:#ecebe7; --ink-2:#b4b6ba; --ink-3:#7f8288;
-    --line:#2f3136; --accent:#7cc2a0; --accent-soft:#1f3229; --warn:#e3a95e; --warn-soft:#352816;
-    --chip-gut:#1f2a3a; --chip-gut-ink:#9cbbe6; --chip-eye:#2b2135; --chip-eye-ink:#cfb2e8;
-    --chip-sleep:#1d2b2e; --chip-sleep-ink:#9fcbd4; --chip-beauty:#33212a; --chip-beauty-ink:#eeaabd;
-    --chip-vit:#2f2a17; --chip-vit-ink:#e3cf7f;
-    --shadow:none;
+    --line:#2f3136; --accent:#7cc2a0; --accent-soft:#1f3229; --shadow:none;
   }
 }
 :root[data-theme="dark"]{
   --bg:#141516; --surface:#1c1d20; --surface-2:#24262a; --ink:#ecebe7; --ink-2:#b4b6ba; --ink-3:#7f8288;
-  --line:#2f3136; --accent:#7cc2a0; --accent-soft:#1f3229; --warn:#e3a95e; --warn-soft:#352816;
-  --chip-gut:#1f2a3a; --chip-gut-ink:#9cbbe6; --chip-eye:#2b2135; --chip-eye-ink:#cfb2e8;
-  --chip-sleep:#1d2b2e; --chip-sleep-ink:#9fcbd4; --chip-beauty:#33212a; --chip-beauty-ink:#eeaabd;
-  --chip-vit:#2f2a17; --chip-vit-ink:#e3cf7f;
-  --shadow:none;
+  --line:#2f3136; --accent:#7cc2a0; --accent-soft:#1f3229; --shadow:none;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   font-size:16px;line-height:1.7;word-break:keep-all;overflow-wrap:break-word}
-a{color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 35%,transparent)}
-a:hover{border-bottom-color:var(--accent)}
-.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
 header.top{border-bottom:1px solid var(--line);background:var(--surface)}
 header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
-.brand{font-weight:700;letter-spacing:-.01em;color:var(--ink);border:0}
+.brand{font-weight:700;letter-spacing:-.01em}
 .brand span{color:var(--accent)}
 .theme-btn{background:none;border:1px solid var(--line);color:var(--ink-2);border-radius:999px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer}
-.hero{padding:48px 0 32px}
+.hero{padding:48px 0 24px}
 .eyebrow{font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.04em}
-h1{font-size:clamp(28px,4.5vw,40px);line-height:1.25;letter-spacing:-.02em;margin:8px 0 12px}
-.byline{color:var(--ink-3);font-size:14px}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
-.kpi{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
-.kpi .v{font-size:28px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.kpi .l{font-size:13px;color:var(--ink-2)}
-nav.toc{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-nav.toc .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:8px;padding-bottom:8px;scrollbar-width:none}
-nav.toc a{flex:none;border:0;color:var(--ink-2);font-size:14px;padding:6px 12px;border-radius:999px}
-nav.toc a:hover,nav.toc a.on{background:var(--surface-2);color:var(--ink)}
-section{padding:40px 0 8px;scroll-margin-top:56px}
-h2{font-size:22px;letter-spacing:-.01em;margin:0 0 16px;display:flex;align-items:baseline;gap:10px}
-h2 .n{font-size:13px;color:var(--ink-3);font-weight:600;font-variant-numeric:tabular-nums}
-h3{font-size:17px;margin:0 0 6px}
-p{margin:0 0 12px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
-.trend{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 12px 12px 0;padding:14px 18px;margin:0 0 20px;font-weight:500}
-.picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
-.pick .co{font-size:13px;color:var(--ink-3)}
-.pick .why{font-size:14px;color:var(--ink-2);margin-top:6px}
-.chip{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
-.c-sleep{background:var(--chip-sleep);color:var(--chip-sleep-ink)}
-.c-eye{background:var(--chip-eye);color:var(--chip-eye-ink)}
-.c-vit{background:var(--chip-vit);color:var(--chip-vit-ink)}
-.c-beauty{background:var(--chip-beauty);color:var(--chip-beauty-ink)}
-.c-gut{background:var(--chip-gut);color:var(--chip-gut-ink)}
-.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow)}
-table{border-collapse:collapse;width:100%;min-width:860px;font-size:14px}
-th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-size:12px;font-weight:600;color:var(--ink-3);background:var(--surface-2);letter-spacing:.02em;white-space:nowrap}
-tr:last-child td{border-bottom:0}
-td.date{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink-2)}
-td.prod{font-weight:600}
-.na{color:var(--ink-3)}
-.note{font-size:13px;color:var(--ink-3);margin-top:10px}
-.ref{margin-top:20px}
-.ref ul{margin:0;padding-left:18px;font-size:14px;color:var(--ink-2)}
-.ref li{margin-bottom:4px}
-.cats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.cat .hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.cat .st{font-size:12px;color:var(--ink-3)}
-.cat.quiet{background:transparent;box-shadow:none;border-style:dashed}
-.cat p{font-size:14px;color:var(--ink-2)}
-.issues{display:grid;gap:12px}
-.issue .tag{font-size:12px;font-weight:600;color:var(--warn);background:var(--warn-soft);padding:2px 8px;border-radius:6px;margin-right:6px}
-.issue p{font-size:15px;margin:8px 0 0;color:var(--ink-2)}
-.stat{display:flex;gap:24px;flex-wrap:wrap;margin-top:12px}
-.stat div b{display:block;font-size:24px;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
-.stat div span{font-size:13px;color:var(--ink-3)}
-.checks{list-style:none;margin:0;padding:0}
-.checks li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
-.checks li:last-child{border-bottom:0}
-.checks input{width:18px;height:18px;margin-top:4px;accent-color:var(--accent);flex:none}
-.checks label{cursor:pointer;font-size:15px}
-.checks input:checked + label{color:var(--ink-3);text-decoration:line-through}
+h1{font-size:clamp(28px,4.5vw,40px);line-height:1.25;letter-spacing:-.02em;margin:8px 0 10px}
+.lead{color:var(--ink-2);margin:0}
+.latest{display:block;margin:28px 0 8px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow);transition:transform .15s}
+.latest:hover{transform:translateY(-2px)}
+.latest .badge{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:2px 10px;border-radius:999px}
+.latest h2{font-size:22px;margin:10px 0 4px;letter-spacing:-.01em}
+.latest .range{color:var(--ink-3);font-size:14px}
+.latest .trend{margin:12px 0 0;color:var(--ink-2)}
+.meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:14px;color:var(--ink-2)}
+.meta b{color:var(--ink);font-variant-numeric:tabular-nums}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:36px 0 8px}
+.filters button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);padding:4px 12px;border-radius:999px;cursor:pointer}
+.filters button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.month{font-size:14px;font-weight:700;color:var(--ink-3);margin:28px 0 10px;letter-spacing:.02em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.wk{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);transition:border-color .15s}
+.wk:hover{border-color:var(--accent)}
+.wk .no{font-size:12px;font-weight:700;color:var(--accent)}
+.wk h3{font-size:17px;margin:4px 0 2px}
+.wk .range{font-size:13px;color:var(--ink-3)}
+.wk ul{margin:10px 0 0;padding-left:18px;font-size:14px;color:var(--ink-2)}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:12px}
+.tag{font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--surface-2);color:var(--ink-2)}
+.empty{color:var(--ink-3);font-size:14px;padding:16px 0}
 footer{margin-top:56px;padding:28px 0 48px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3)}
-footer p{margin:0 0 6px}
-@media (max-width:720px){
-  .kpis{grid-template-columns:repeat(2,1fr)}
-  .cats{grid-template-columns:1fr}
-  .hero{padding:32px 0 24px}
-}
 </style>
 </head>
 <body>
@@ -117,129 +67,46 @@ footer p{margin:0 0 6px}
   <button class="theme-btn" id="themeBtn" type="button">테마 전환</button>
 </div></header>
 
-<div class="wrap hero">
-  <div class="eyebrow">WEEKLY REPORT · 2026년 41주차</div>
-  <h1>주간 건강식품 신제품 리포트<br>(10월 5일~10월 11일)</h1>
-  <div class="byline">작성일 2026-10-17 · ziny0511</div>
-  <div class="kpis">
-    <div class="kpi"><div class="v">5</div><div class="l">확인된 신제품</div></div>
-    <div class="kpi"><div class="v">2</div><div class="l">출시 기업</div></div>
-    <div class="kpi"><div class="v">1</div><div class="l">신규 개별인정 원료</div></div>
-    <div class="kpi"><div class="v">5.83조</div><div class="l">2025 시장 규모(칸타)</div></div>
-  </div>
-</div>
-
-<nav class="toc"><div class="wrap">
-  <a href="#summary">요약</a><a href="#products">신제품 목록</a><a href="#categories">카테고리 동향</a><a href="#regulation">규제·시장</a><a href="#checklist">체크포인트</a>
-</div></nav>
-
 <main class="wrap">
-
-<section id="summary">
-  <h2><span class="n">01</span>지난주 요약</h2>
-  <p class="trend">한 줄 트렌드: 장건강·혈당 대형 출시는 전주(9/28~10/4)에 몰렸고, 지난주는 수면·눈·이너뷰티로 라인업을 넓히는 출시가 중심이었습니다. 구미와 저분자 콜라겐처럼 먹기 쉬운 제형이 눈에 띕니다.</p>
-  <p>원문 기사로 확인된 지난주 신제품은 <b>5개(2개 기업)</b>입니다. 바디프랜드 3종(10/8)과 뉴트리 에버콜라겐 2종(10/8)입니다. 같은 날 에이스바이옴의 피부건강 유산균 ACE-01이 개별인정형 원료(제2026-33호)로 인정됐습니다.</p>
-  <div class="picks">
-    <div class="card pick"><span class="chip c-sleep">수면</span><h3 style="margin-top:10px">수면푹 아쉬아간다</h3><div class="co">바디프랜드 · 10/8</div><div class="why">식약처 개별인정형 아쉬아간다 추출물 사용. 안마의자 기업의 수면 건기식 진입.</div></div>
-    <div class="card pick"><span class="chip c-eye">눈</span><h3 style="margin-top:10px">눈쨍 루테인 플러스 구미</h3><div class="co">바디프랜드 · 10/8</div><div class="why">마리골드꽃추출물 루테인과 비타민A를 구미로. 캡슐 위주인 루테인 시장에서 제형 차별화.</div></div>
-    <div class="card pick"><span class="chip c-beauty">이너뷰티</span><h3 style="margin-top:10px">에버콜라겐 인앤업·타임 프라임</h3><div class="co">뉴트리 · 10/8</div><div class="why">자체 GPH 저분자 콜라겐에 리포좀 비타민·미네랄 추가. 회사 측 "효소 처리 전 대비 흡수율 54배".</div></div>
-    <div class="card pick"><span class="chip c-beauty">원료</span><h3 style="margin-top:10px">ACE-01 (ABF21013)</h3><div class="co">에이스바이옴 · 10/8 인정</div><div class="why">피부 보습과 자외선 피부손상 2중 기능성. 12주 인체적용시험, 6주차부터 유의한 개선.</div></div>
+  <div class="hero">
+    <div class="eyebrow">KOREA HEALTH FUNCTIONAL FOOD · WEEKLY</div>
+    <h1>주간 건강식품 신제품 리포트</h1>
+    <p class="lead">매주 월~일 국내에서 출시·보도된 건강기능식품 신제품과 규제·시장 이슈를 정리합니다. 주차를 눌러 지난 리포트를 볼 수 있습니다.</p>
+    <div id="latest"></div>
   </div>
-</section>
 
-<section id="products">
-  <h2><span class="n">02</span>신제품 목록</h2>
-  <div class="tbl-wrap">
-  <table>
-    <thead><tr><th>날짜</th><th>제품명</th><th>브랜드</th><th>카테고리</th><th>주요 성분</th><th>제형</th><th>채널</th><th>가격</th></tr></thead>
-    <tbody>
-      <tr><td class="date">10-08</td><td class="prod"><a href="https://www.newspim.com/news/view/20261008001055" target="_blank" rel="noopener">에버콜라겐 인앤업 프라임</a></td><td>뉴트리</td><td><span class="chip c-beauty">이너뷰티</span></td><td>GPH 저분자 콜라겐 펩타이드, 리포좀 비타민·미네랄</td><td><span class="na">미확인</span> (레몬맛)</td><td>에버콜라겐 공식몰, 온라인, 홈쇼핑 순차</td><td class="na">미확인</td></tr>
-      <tr><td class="date">10-08</td><td class="prod"><a href="https://www.newspim.com/news/view/20261008001055" target="_blank" rel="noopener">에버콜라겐 타임 프라임</a></td><td>뉴트리</td><td><span class="chip c-beauty">이너뷰티</span></td><td>GPH 저분자 콜라겐 펩타이드, 리포좀 비타민·미네랄</td><td><span class="na">미확인</span> (레몬맛)</td><td>에버콜라겐 공식몰, 온라인, 홈쇼핑 순차</td><td class="na">미확인</td></tr>
-      <tr><td class="date">10-08</td><td class="prod"><a href="https://www.g-enews.com/article/Distribution/2026/10/202610080823434521a96f092d0c_1" target="_blank" rel="noopener">수면푹 아쉬아간다</a></td><td>바디프랜드 헬스케어</td><td><span class="chip c-sleep">수면</span></td><td>아쉬아간다 추출물(개별인정형)</td><td class="na">미확인</td><td>공식 홈페이지·멤버십 앱 예약 후 라운지 구매(이벤트)</td><td>990원 (이벤트가)</td></tr>
-      <tr><td class="date">10-08</td><td class="prod"><a href="https://www.g-enews.com/article/Distribution/2026/10/202610080823434521a96f092d0c_1" target="_blank" rel="noopener">활력뿜 멀티비타민&amp;이뮨 구미</a></td><td>바디프랜드 헬스케어</td><td><span class="chip c-vit">비타민·활력</span></td><td>비타민 B군·C·D·E, 아연, 셀렌, 망간</td><td>구미</td><td>공식 홈페이지·멤버십 앱 예약 후 라운지 구매(이벤트)</td><td>990원 (이벤트가)</td></tr>
-      <tr><td class="date">10-08</td><td class="prod"><a href="https://www.g-enews.com/article/Distribution/2026/10/202610080823434521a96f092d0c_1" target="_blank" rel="noopener">눈쨍 루테인 플러스 구미</a></td><td>바디프랜드 헬스케어</td><td><span class="chip c-eye">눈</span></td><td>마리골드꽃추출물(루테인), 비타민A</td><td>구미</td><td>공식 홈페이지·멤버십 앱 예약 후 라운지 구매(이벤트)</td><td>990원 (이벤트가)</td></tr>
-    </tbody>
-  </table>
-  </div>
-  <p class="note">가격 990원은 라운지 체험 예약 후 방문 고객 대상 이벤트가입니다. 정가는 원문에 없습니다. 뉴트리 2종은 원문에 건강기능식품 품목 신고 여부가 명시되지 않았습니다(회사는 "건강기능식품 전문기업"으로 소개).</p>
-
-  <div class="card ref">
-    <h3>지난주 이전·이후 참고</h3>
-    <ul>
-      <li>10/12 정식 출시: 헥토헬스케어 <a href="https://www.segye.com/newsView/20261003501574" target="_blank" rel="noopener">드시모네 캡슐 프리미엄</a>. 1캡슐 1000억 CFU 보장, 공식몰 D2C (9/28부터 1,000개 사전판매).</li>
-      <li>10/4 보도: 풀무원헬스케어 <a href="https://www.segye.com/newsView/20261011503254" target="_blank" rel="noopener">관절엔 콘드로이친 1200 퀵샷</a>. 콘드로이친 1200mg, 액상 1병.</li>
-      <li>10/2 보도: 씨티씨바이오 <a href="https://www.medipana.com/news/articleView.html?idxno=324330" target="_blank" rel="noopener">당엔지</a>(바나바잎 추출물+프로바이오틱스 8종). 원문 미확인.</li>
-      <li>10/1 발표: hy <a href="https://www.insight.co.kr/news/576143" target="_blank" rel="noopener">쿠퍼스 블러드케어·피로케어</a> 리뉴얼. 원문 미확인.</li>
-      <li>9/30: 동아제약 <a href="https://www.newswire.co.kr/newsRead.php?no=1043699" target="_blank" rel="noopener">위스트로</a>(위 건강 개별인정형 원료).</li>
-      <li>10/13 이후: 에이치엘사이언스 닥터슈퍼칸 마그네슘(10/13), 플랫폼에이 에이지 밸런스(10/15), 디에디션헬스 루테인지아잔틴(10/16 보도).</li>
-    </ul>
-  </div>
-</section>
-
-<section id="categories">
-  <h2><span class="n">03</span>카테고리별 동향</h2>
-  <div class="cats">
-    <div class="card cat"><div class="hd"><span class="chip c-gut">장건강</span><span class="st">지난주 신제품 0</span></div>
-      <p>지난주 신규 출시는 없었습니다. 전주부터 고함량 경쟁이 이어집니다. 헥토 드시모네 캡슐 프리미엄(1000억 CFU)이 10/12 정식 출시됐습니다(<a href="https://www.segye.com/newsView/20261003501574" target="_blank" rel="noopener">세계일보 10/3</a>). 10/6에는 엔케이젠바이오텍 '슬림바이365'(100억 CFU, 카테킨 300mg) 초도물량 완판 소식이 나왔습니다(<a href="https://www.fnnews.com/news/202610061041075795" target="_blank" rel="noopener">파이낸셜뉴스</a>). 다이어트 유산균 경쟁도 계속됩니다.</p></div>
-    <div class="card cat"><div class="hd"><span class="chip c-vit">혈당·복합기능</span><span class="st">지난주 신제품 1</span></div>
-      <p>혈당 단독 신제품은 없었습니다. 전주에 씨티씨바이오 당엔지, hy 쿠퍼스 블러드케어가 나와 경쟁이 집중됐습니다. 지난주에는 바디프랜드 활력뿜(멀티비타민 구미)처럼 한 제품에 여러 기능을 묶은 복합 제품이 나왔습니다.</p></div>
-    <div class="card cat"><div class="hd"><span class="chip c-vit">관절</span><span class="st">지난주 신제품 0</span></div>
-      <p>신제품은 없지만 '콘드로이친 1200mg' 경쟁 구도가 선명합니다. 풀무원(액상 퀵샷), 유한양행(9/1, 액상 스틱), 대원제약(3월, 정제), 동원F&amp;B GNC(3월, 정제)가 액티브 시니어를 놓고 경쟁합니다(<a href="https://www.segye.com/newsView/20261011503254" target="_blank" rel="noopener">세계일보 10/11</a>).</p></div>
-    <div class="card cat"><div class="hd"><span class="chip c-eye">눈</span><span class="st">지난주 신제품 1</span></div>
-      <p>바디프랜드 눈쨍 루테인 플러스 구미가 나왔습니다. 이번 주에는 에이치피오·롯데홈쇼핑 합작 '디에디션헬스' 루테인지아잔틴(10/17 방송), 안국건강 rTG 오메가3 복합 제품이 이어져 홈쇼핑 루테인 경쟁이 커질 전망입니다.</p></div>
-    <div class="card cat"><div class="hd"><span class="chip c-sleep">수면</span><span class="st">지난주 신제품 1</span></div>
-      <p>바디프랜드가 개별인정형 아쉬아간다로 진입했습니다. 식약처 10/16 신규 등록 목록에도 '스르륵 테아닌'(제주테크노파크)이 올라 있습니다(<a href="https://data.mfds.go.kr/hid/main/main.do" target="_blank" rel="noopener">건강기능식품 종합정보</a>). 수면은 칸타 분석에서도 성장 영역으로 꼽혔습니다.</p></div>
-    <div class="card cat"><div class="hd"><span class="chip c-beauty">이너뷰티</span><span class="st">지난주 신제품 2</span></div>
-      <p>뉴트리 에버콜라겐 2종이 리포좀 기술로 차별화했습니다. 원료 쪽에서는 에이스바이옴 ACE-01이 피부 보습·자외선 2중 기능성을 받아 '유산균 이너뷰티' 제품이 늘어날 수 있습니다(<a href="https://www.mt.co.kr/thebio/2026/10/08/2026100817335239320" target="_blank" rel="noopener">머니투데이 10/8</a>).</p></div>
-    <div class="card cat quiet"><div class="hd"><span class="chip c-vit">단백질</span><span class="st">지난주 신제품 0</span></div>
-      <p>확인된 건강기능식품 신제품 없음.</p></div>
-  </div>
-</section>
-
-<section id="regulation">
-  <h2><span class="n">04</span>규제·시장 이슈</h2>
-  <div class="issues">
-    <div class="card issue"><span class="tag">신규 원료 인정</span><b>에이스바이옴 ACE-01, 개별인정원료 제2026-33호</b>
-      <p>원료명은 L. paracasei subsp. paracasei ABF21013입니다. '피부 보습'과 '자외선에 의한 피부 손상으로부터 피부건강 유지' 2가지 기능성을 인정받았습니다. 30~70세 대상 12주 인체적용시험에서 6주차부터 주름(PRIMOS)·수분량이 개선됐습니다. BNR17(비엔알씬)에 이은 두 번째 핵심 원료입니다. 출처: <a href="https://www.mt.co.kr/thebio/2026/10/08/2026100817335239320" target="_blank" rel="noopener">머니투데이 10/8</a></p></div>
-    <div class="card issue"><span class="tag">원료 등재 현황</span><b>2026년 개별인정원료 제31~34호 공개</b>
-      <p>식약처 종합정보 서비스에 황칠나무잎추출물(롯데웰푸드 31호, 네오그린 32호), ACE-01(33호), 천마추출물(전북농업기술원 34호)이 올라 있습니다. 31·32·34호의 인정일은 페이지에 표시되지 않아 확인이 필요합니다. 출처: <a href="https://data.mfds.go.kr/hid/main/main.do" target="_blank" rel="noopener">건강기능식품 종합정보 서비스</a></p></div>
-    <div class="card issue"><span class="tag">재평가</span><b>2027년 기능성 원료 10종 정기 재평가 예고</b>
-      <p>빌베리추출물(고시형) 1종과 개별인정형 9종이 대상입니다. 약 2개월 전 보도로, 원문 확인이 필요합니다. 출처: <a href="https://www.kpanews.co.kr/news/articleView.html?idxno=541328" target="_blank" rel="noopener">약사공론</a></p></div>
-    <div class="card issue"><span class="tag">시장 규모</span><b>2025년 국내 건기식 시장 5조 8,339억 원</b>
-      <div class="stat">
-        <div><b>5조 8,339억</b><span>2025 시장 규모</span></div>
-        <div><b>83.6%</b><span>가구 구매율</span></div>
-        <div><b>71.1%</b><span>온라인 비중 (전년 70.6%)</span></div>
-        <div><b>31.6만 원</b><span>가구당 연간 구매액</span></div>
-      </div>
-      <p>칸타가 한국건강기능식품협회 트렌드 세미나(3/23)에서 발표했습니다. 선물보다 자기 구매, 수면·눈 등 기능 세분화가 성장 요인으로 꼽혔습니다. 출처: <a href="http://www.foodnews.co.kr/news/articleView.html?idxno=117781" target="_blank" rel="noopener">식품저널</a></p></div>
-  </div>
-</section>
-
-<section id="checklist">
-  <h2><span class="n">05</span>이번 주 체크포인트</h2>
-  <div class="card">
-  <ul class="checks" id="checks">
-    <li><input type="checkbox" id="k1"><label for="k1">바디프랜드 3종의 정가, 상시 판매 채널, 수면푹 제형 확인</label></li>
-    <li><input type="checkbox" id="k2"><label for="k2">뉴트리 에버콜라겐 2종의 건기식 품목신고 여부와 제형(스틱·분말 등) 확인</label></li>
-    <li><input type="checkbox" id="k3"><label for="k3">드시모네 캡슐 프리미엄 10/12 정식 출시 후 판매가 확인</label></li>
-    <li><input type="checkbox" id="k4"><label for="k4">디에디션헬스 루테인지아잔틴(롯데홈쇼핑 10/17 방송) 성분 함량·가격 확인</label></li>
-    <li><input type="checkbox" id="k5"><label for="k5">안국건강 아이원 루테인지아잔틴 rTG 오메가3 원문 기사 확인</label></li>
-    <li><input type="checkbox" id="k6"><label for="k6">에이스바이옴 ACE-01 적용 완제품 출시 일정 확인</label></li>
-    <li><input type="checkbox" id="k7"><label for="k7">개별인정원료 제2026-31·32·34호 인정일 확인</label></li>
-    <li><input type="checkbox" id="k8"><label for="k8">2027 재평가 10종 전체 목록 원문 확인</label></li>
-    <li><input type="checkbox" id="k9"><label for="k9">그린몬스터 쾌변쑥·체지방쏙 젤리(10/16)의 건기식 해당 여부 확인</label></li>
-  </ul>
-  </div>
-</section>
-
+  <div class="filters" id="filters"></div>
+  <div id="list"></div>
 </main>
 
 <footer><div class="wrap">
-  <p>조사 기간: 2026-10-05(월) ~ 2026-10-11(일). 표의 날짜·성분·가격은 링크된 원문 기사로 확인했습니다.</p>
-  <p>뉴스와이어 건강기능식품 보도자료는 이 기간에 신제품 보도가 없었습니다. 약업신문 신제품 목록은 최신 항목이 9/22였습니다. 그래서 보도 누락이 있을 수 있습니다.</p>
-  <p>기능성 문구는 회사 발표 기준입니다. 이 리포트는 구매 권유가 아닙니다.</p>
+  <p>표의 날짜·성분·가격은 각 주차 리포트에 링크된 원문 기사 기준입니다. 기능성 문구는 회사 발표 기준이며, 구매 권유가 아닙니다.</p>
 </div></footer>
+
+<!--
+  주차 목록. 새 리포트를 추가할 때는 reports/YYYY-Www.html 파일을 만들고
+  아래 배열의 맨 앞에 항목 하나를 추가하세요. (최신 주차가 맨 앞)
+-->
+<script type="application/json" id="weeks">
+[
+  {
+    "id": "2026-W41",
+    "file": "reports/2026-W41.html",
+    "start": "2026-10-05",
+    "end": "2026-10-11",
+    "published": "2026-10-17",
+    "products": 5,
+    "companies": 2,
+    "categories": ["수면", "눈", "이너뷰티", "비타민·활력"],
+    "trend": "장건강·혈당 대형 출시는 전주에 몰렸고, 지난주는 수면·눈·이너뷰티로 라인업을 넓히는 출시가 중심.",
+    "highlights": [
+      "바디프랜드 수면·눈·활력 건기식 3종 (10/8)",
+      "뉴트리 에버콜라겐 프라임 2종 (10/8)",
+      "에이스바이옴 ACE-01 개별인정 제2026-33호 (10/8)"
+    ]
+  }
+]
+</script>
 
 <script>
 (function(){
@@ -251,17 +118,55 @@ footer p{margin:0 0 6px}
     var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
     var next=cur==='dark'?'light':'dark'; root.setAttribute('data-theme',next); set(KEY,next);
   });
-  var CK='hf-checks-2026-10-17', state={};
-  try{state=JSON.parse(get(CK)||'{}')||{}}catch(e){}
-  document.querySelectorAll('#checks input').forEach(function(cb){
-    cb.checked=!!state[cb.id];
-    cb.addEventListener('change',function(){state[cb.id]=cb.checked;set(CK,JSON.stringify(state))});
+
+  var weeks=[];
+  try{weeks=JSON.parse(document.getElementById('weeks').textContent)}catch(e){}
+  weeks.sort(function(a,b){return a.start<b.start?1:-1});
+
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function md(d){var p=d.split('-');return (+p[1])+'월 '+(+p[2])+'일'}
+  function wkNo(id){var m=/W(\d+)/.exec(id);return m?(+m[1])+'주차':id}
+  function range(w){return md(w.start)+' ~ '+md(w.end)}
+
+  var latest=weeks[0], L=document.getElementById('latest');
+  if(latest){
+    L.innerHTML='<a class="latest" href="'+esc(latest.file)+'">'+
+      '<span class="badge">최신 · '+esc(latest.start.slice(0,4))+'년 '+esc(wkNo(latest.id))+'</span>'+
+      '<h2>'+esc(range(latest))+' 리포트</h2>'+
+      '<div class="range">발행 '+esc(latest.published)+'</div>'+
+      '<p class="trend">'+esc(latest.trend)+'</p>'+
+      '<div class="meta"><span>신제품 <b>'+latest.products+'</b>개</span><span>기업 <b>'+latest.companies+'</b>곳</span><span>'+esc(latest.categories.join(' · '))+'</span></div>'+
+      '</a>';
+  }
+
+  var cats=[];
+  weeks.forEach(function(w){(w.categories||[]).forEach(function(c){if(cats.indexOf(c)<0)cats.push(c)})});
+  var active='전체', F=document.getElementById('filters');
+  ['전체'].concat(cats).forEach(function(c){
+    var b=document.createElement('button'); b.type='button'; b.textContent=c;
+    if(c===active)b.className='on';
+    b.onclick=function(){active=c;[].forEach.call(F.children,function(x){x.className=x===b?'on':''});render()};
+    F.appendChild(b);
   });
-  var links=document.querySelectorAll('nav.toc a'), secs=[].map.call(links,function(a){return document.querySelector(a.getAttribute('href'))});
-  addEventListener('scroll',function(){
-    var y=scrollY+90, idx=0; secs.forEach(function(s,i){if(s&&s.offsetTop<=y) idx=i});
-    links.forEach(function(a,i){a.classList.toggle('on',i===idx)});
-  },{passive:true});
+
+  function render(){
+    var list=document.getElementById('list'), html='', lastMonth='';
+    var shown=weeks.filter(function(w){return active==='전체'||(w.categories||[]).indexOf(active)>=0});
+    if(!shown.length){list.innerHTML='<p class="empty">해당 카테고리 리포트가 없습니다.</p>';return}
+    shown.forEach(function(w){
+      var m=w.start.slice(0,4)+'년 '+(+w.start.slice(5,7))+'월';
+      if(m!==lastMonth){ if(lastMonth) html+='</div>'; html+='<div class="month">'+m+'</div><div class="grid">'; lastMonth=m; }
+      html+='<a class="wk" href="'+esc(w.file)+'">'+
+        '<span class="no">'+esc(wkNo(w.id))+'</span>'+
+        '<h3>'+esc(range(w))+'</h3>'+
+        '<span class="range">신제품 '+w.products+'개 · 발행 '+esc(w.published)+'</span>'+
+        '<ul>'+(w.highlights||[]).map(function(h){return '<li>'+esc(h)+'</li>'}).join('')+'</ul>'+
+        '<div class="tags">'+(w.categories||[]).map(function(c){return '<span class="tag">'+esc(c)+'</span>'}).join('')+'</div>'+
+        '</a>';
+    });
+    list.innerHTML=html+'</div>';
+  }
+  render();
 })();
 </script>
 </body>
