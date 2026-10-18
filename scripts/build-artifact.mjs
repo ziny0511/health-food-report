@@ -47,3 +47,18 @@ mkdirSync(join(ROOT, "artifact", "dist"), { recursive: true });
 const dest = join(ROOT, "artifact", "dist", "health-food-weekly.html");
 writeFileSync(dest, out);
 console.log(`built ${dest} (${(out.length / 1024).toFixed(0)} KB, ${weeks.length} weeks, trend ${trend ? "yes" : "no"}, deep ${deep ? "yes" : "no"})`);
+
+// 로그인·인터넷 없이 더블클릭으로 여는 단독 파일 (메일·사내 메신저 전달용).
+// 아티팩트는 문서 골격을 자동으로 씌우지만 단독 파일은 직접 씌워야 표준 모드로 렌더링된다.
+const standalone = `<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>
+${out}
+</html>
+`;
+const standaloneDest = join(ROOT, "artifact", "dist", `health-food-weekly-${weeks[0]?.id ?? "latest"}.html`);
+writeFileSync(standaloneDest, standalone);
+console.log(`built ${standaloneDest} (standalone)`);
