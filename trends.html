@@ -89,6 +89,28 @@ th{font-size:12px;color:var(--ink-3);background:var(--surface-2);font-weight:600
 tr:last-child td{border-bottom:0}
 details summary{cursor:pointer;color:var(--ink-2);font-size:14px;margin-bottom:10px}
 .method li{margin-bottom:4px}
+/* deep dive */
+.dd{margin-bottom:16px}
+.dd-hd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.dd-hd h3{margin:0;font-size:19px}
+.badge{font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px}
+.badge.up{color:var(--up-ink);background:color-mix(in srgb,var(--up) 14%,transparent)}
+.badge.down{color:var(--down-ink);background:color-mix(in srgb,var(--down) 14%,transparent)}
+.dd-head{font-size:16px;font-weight:600;margin:6px 0 16px}
+.dd-charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px 28px}
+.mini h4{font-size:13px;color:var(--ink-2);margin:0 0 6px;font-weight:600}
+.mini .div-row{grid-template-columns:var(--lw,92px) 1fr;height:30px}
+.mini .div-row .lbl{font-size:12.5px;font-weight:500;color:var(--ink-2)}
+.mini .div-bar{top:8px;height:14px}
+.mini .div-val{top:4px;font-size:12px}
+.mini .div-axis{grid-template-columns:var(--lw,92px) 1fr;font-size:11px}
+.mini .fn{font-size:12px;color:var(--ink-3);margin-top:4px}
+.dd-find{margin:18px 0 0;padding-left:18px;font-size:15px}
+.dd-find li{margin-bottom:6px}
+.dd-src{margin-top:12px;font-size:13px;color:var(--ink-3)}
+.dd-src a{border-bottom:1px solid color-mix(in srgb,var(--accent) 35%,transparent)}
+.dd-src ul{margin:4px 0 0;padding-left:18px}
+.caveat{font-size:13px;color:var(--ink-3);padding-left:18px;margin:4px 0 0}
 footer{margin-top:56px;padding:28px 0 48px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3)}
 .err{color:var(--down-ink)}
 @media (max-width:720px){ .div-row,.div-axis{grid-template-columns:64px 1fr} .div-row .lbl{font-size:13px} }
@@ -126,6 +148,12 @@ footer{margin-top:56px;padding:28px 0 48px;border-top:1px solid var(--line);font
     <h2>카테고리별 2년 추이</h2>
     <p class="sub">선은 주간 관심 점유율(비타민=100), 점선은 1년 전 시점입니다. 큰 숫자는 최근 12주 평균입니다. 선 위에 마우스를 올리면 주별 값이 보입니다.</p>
     <div class="sm" id="sm"></div>
+  </section>
+
+  <section id="deep">
+    <h2>심층 분석: 점유율이 가장 오른 곳과 가장 내린 곳</h2>
+    <p class="sub" id="deepSub">키워드별·연령별 검색과 네이버쇼핑 클릭 데이터로 원인을 분해했습니다.</p>
+    <div id="deepBody"></div>
   </section>
 
   <section>
@@ -173,6 +201,53 @@ footer{margin-top:56px;padding:28px 0 48px;border-top:1px solid var(--line);font
 
   fetch('data/trend-latest.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(render)
     .catch(function(e){document.getElementById('period').innerHTML='<span class="err">데이터를 불러오지 못했습니다 ('+esc(e.message)+').</span>'});
+
+  // 심층 분석: 주차별 스냅샷 파일 (분석한 주차가 바뀌면 파일명만 바꾼다)
+  fetch('data/deep-dive-2026-W41.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(renderDeep)
+    .catch(function(e){document.getElementById('deepBody').innerHTML='<p class="err">심층 분석 데이터를 불러오지 못했습니다 ('+esc(e.message)+').</p>'});
+
+  // 0을 가운데 둔 가로 막대. 양수=파랑, 음수=빨강, 값 라벨은 막대 끝에.
+  function divBars(rows){
+    var mx=Math.max.apply(null,rows.map(function(r){return Math.abs(r.value)}));
+    var m=Math.max(5,Math.ceil(mx*1.35/5)*5), pos=function(v){return (v+m)/(2*m)*100};
+    var h='';
+    rows.forEach(function(r,i){
+      var v=r.value,z=pos(0),x=pos(v),neg=v<0,left=Math.min(z,x),w=Math.abs(x-z);
+      var vp=neg?'right:calc('+(100-left)+'% + 5px)':'left:calc('+(left+w)+'% + 5px)';
+      h+='<div class="div-row"><div class="lbl">'+esc(r.label)+'</div><div class="div-track">'+
+        '<div class="div-zero" style="left:'+z+'%"></div>'+
+        '<div class="div-bar '+(neg?'neg':'pos')+'" style="left:'+left+'%;width:'+w+'%"></div>'+
+        '<div class="div-val" style="'+vp+'">'+sgn(v)+'</div>'+
+        '<div class="div-hit" data-i="'+i+'"></div></div></div>';
+    });
+    h+='<div class="div-axis"><div></div><div class="t">'+[-m,0,m].map(function(t){return '<span style="left:'+pos(t)+'%">'+(t>0?'+':'')+t+'%</span>'}).join('')+'</div></div>';
+    return h;
+  }
+
+  function renderDeep(d){
+    document.getElementById('deepSub').textContent='키워드별·연령별 검색과 네이버쇼핑 클릭 데이터로 원인을 분해했습니다. 비교 구간: '+d.window+'.';
+    var body=document.getElementById('deepBody'), html='';
+    d.categories.forEach(function(c,ci){
+      html+='<div class="card dd"><div class="dd-hd"><h3>'+esc(c.name)+'</h3><span class="badge '+(c.direction==='up'?'up':'down')+'">'+(c.direction==='up'?'▲ 점유율 최대 상승':'▼ 점유율 최대 하락')+'</span></div>'+
+        '<p class="dd-head">'+esc(c.headline)+'</p><div class="dd-charts">';
+      c.charts.forEach(function(ch,k){
+        var lw=Math.max.apply(null,ch.rows.map(function(r){return r.label.length}))>7?'118px':'84px';
+        html+='<div class="mini" style="--lw:'+lw+'" data-c="'+ci+'" data-k="'+k+'"><h4>'+esc(ch.title)+'</h4>'+divBars(ch.rows)+(ch.footnote?'<div class="fn">'+esc(ch.footnote)+'</div>':'')+'</div>';
+      });
+      html+='</div><ul class="dd-find">'+c.findings.map(function(f){return '<li>'+esc(f)+'</li>'}).join('')+'</ul>'+
+        '<div class="dd-src">근거 자료<ul>'+c.sources.map(function(s){return '<li><a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.label)+'</a></li>'}).join('')+'</ul></div></div>';
+    });
+    html+='<ul class="caveat">'+d.caveats.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>';
+    body.innerHTML=html;
+    body.querySelectorAll('.mini').forEach(function(el){
+      var ch=d.categories[+el.dataset.c].charts[+el.dataset.k];
+      el.querySelectorAll('.div-hit').forEach(function(hit){
+        var r=ch.rows[+hit.dataset.i];
+        hit.addEventListener('mousemove',function(e){showTip('<b>'+esc(r.label)+'</b><br><span class="k">'+esc(ch.title)+'</span><br><b>'+sgn(r.value)+'</b>'+(r.note?'<br><span class="k">'+esc(r.note)+'</span>':''),e.clientX,e.clientY)});
+        hit.addEventListener('mouseleave',hideTip);
+      });
+    });
+  }
 
   function render(d){
     var A=d.anchor.groupName, anchor=d.series[A].map(function(p){return p.value});
