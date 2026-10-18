@@ -213,7 +213,8 @@ footer{margin-top:56px;padding:28px 0 48px;border-top:1px solid var(--line);font
     var h='';
     rows.forEach(function(r,i){
       var v=r.value,z=pos(0),x=pos(v),neg=v<0,left=Math.min(z,x),w=Math.abs(x-z);
-      var vp=neg?'right:calc('+(100-left)+'% + 5px)':'left:calc('+(left+w)+'% + 5px)';
+      // 음수 라벨은 0선 오른쪽에 둬서 왼쪽 행 이름과 겹치지 않게 한다
+      var vp=neg?'left:calc('+z+'% + 5px)':'left:calc('+(left+w)+'% + 5px)';
       h+='<div class="div-row"><div class="lbl">'+esc(r.label)+'</div><div class="div-track">'+
         '<div class="div-zero" style="left:'+z+'%"></div>'+
         '<div class="div-bar '+(neg?'neg':'pos')+'" style="left:'+left+'%;width:'+w+'%"></div>'+
