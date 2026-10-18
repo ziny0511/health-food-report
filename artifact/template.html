@@ -1,0 +1,443 @@
+<title>건기식 위클리</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="한국 건강기능식품 신제품·규제·검색 트렌드 주간 리포트">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* 레이아웃: 상단 고정 헤더 + 960~1040px 단일 컬럼, 화면 3개(주차 목록 / 주차 리포트 / 검색 트렌드)를 해시로 전환 */
+:root{
+  --bg:#f7f6f2; --surface:#ffffff; --surface-2:#f0eee8; --ink:#1c1d1f; --ink-2:#55585e; --ink-3:#83868c;
+  --line:#e2dfd6; --grid:#ecebe5; --axis:#c3c2b7; --ref:#b9b7ae;
+  --accent:#2f6b4f; --accent-soft:#e3efe8; --warn:#9a5b13; --warn-soft:#f6ebdc;
+  --up:#2a78d6; --down:#e34948; --up-ink:#1c5cab; --down-ink:#b8312f;
+  --chip-gut:#e4ecf7; --chip-gut-ink:#2b4f80; --chip-eye:#efe6f6; --chip-eye-ink:#5e3b7d;
+  --chip-sleep:#e6eef0; --chip-sleep-ink:#2e5a63; --chip-beauty:#f8e6ea; --chip-beauty-ink:#8a3049;
+  --chip-vit:#f6f0d9; --chip-vit-ink:#6d5a12;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.04);
+  --font:"Noto Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --hdr:56px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141516; --surface:#1c1d20; --surface-2:#24262a; --ink:#ecebe7; --ink-2:#b4b6ba; --ink-3:#8b8e94;
+    --line:#2f3136; --grid:#2a2c30; --axis:#3d3f44; --ref:#55575c;
+    --accent:#7cc2a0; --accent-soft:#1f3229; --warn:#e3a95e; --warn-soft:#352816;
+    --up:#3987e5; --down:#e66767; --up-ink:#86b6ef; --down-ink:#f09a9a;
+    --chip-gut:#1f2a3a; --chip-gut-ink:#9cbbe6; --chip-eye:#2b2135; --chip-eye-ink:#cfb2e8;
+    --chip-sleep:#1d2b2e; --chip-sleep-ink:#9fcbd4; --chip-beauty:#33212a; --chip-beauty-ink:#eeaabd;
+    --chip-vit:#2f2a17; --chip-vit-ink:#e3cf7f; --shadow:none; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141516; --surface:#1c1d20; --surface-2:#24262a; --ink:#ecebe7; --ink-2:#b4b6ba; --ink-3:#8b8e94;
+  --line:#2f3136; --grid:#2a2c30; --axis:#3d3f44; --ref:#55575c;
+  --accent:#7cc2a0; --accent-soft:#1f3229; --warn:#e3a95e; --warn-soft:#352816;
+  --up:#3987e5; --down:#e66767; --up-ink:#86b6ef; --down-ink:#f09a9a;
+  --chip-gut:#1f2a3a; --chip-gut-ink:#9cbbe6; --chip-eye:#2b2135; --chip-eye-ink:#cfb2e8;
+  --chip-sleep:#1d2b2e; --chip-sleep-ink:#9fcbd4; --chip-beauty:#33212a; --chip-beauty-ink:#eeaabd;
+  --chip-vit:#2f2a17; --chip-vit-ink:#e3cf7f; --shadow:none; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.7;word-break:keep-all;overflow-wrap:break-word}
+a{color:var(--accent);text-decoration:none}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{text-wrap:balance}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;border-bottom:1px solid var(--line);background:var(--surface)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:var(--hdr);gap:8px}
+.brand{font-weight:700;letter-spacing:-.01em;color:var(--ink);cursor:pointer}
+.brand span{color:var(--accent)}
+.navr{display:flex;gap:6px}
+.pill{background:none;border:1px solid var(--line);color:var(--ink-2);border-radius:999px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer;white-space:nowrap}
+.pill.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.view[hidden]{display:none!important}
+.hero{padding-block:44px 24px}
+.eyebrow{font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.06em}
+h1{font-size:clamp(26px,4.5vw,38px);line-height:1.3;letter-spacing:-.02em;margin:8px 0 12px}
+.lead{color:var(--ink-2);margin:0 0 6px;max-width:65ch}
+.byline{color:var(--ink-3);font-size:14px}
+section{padding-block:36px 4px;scroll-margin-top:calc(var(--hdr) + 56px)}
+h2{font-size:21px;letter-spacing:-.01em;margin:0 0 14px;display:flex;align-items:baseline;gap:10px}
+h2 .n{font-size:13px;color:var(--ink-3);font-weight:600;font-variant-numeric:tabular-nums}
+h3{font-size:17px;margin:0 0 6px}
+p{margin:0 0 12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow);min-width:0}
+.note{font-size:13px;color:var(--ink-3);margin-top:10px}
+.sub{font-size:14px;color:var(--ink-2);margin:0 0 16px;max-width:75ch}
+.chip{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.c-sleep{background:var(--chip-sleep);color:var(--chip-sleep-ink)} .c-eye{background:var(--chip-eye);color:var(--chip-eye-ink)}
+.c-vit{background:var(--chip-vit);color:var(--chip-vit-ink)} .c-beauty{background:var(--chip-beauty);color:var(--chip-beauty-ink)}
+.c-gut{background:var(--chip-gut);color:var(--chip-gut-ink)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow)}
+.tbl-wrap table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;font-weight:600;color:var(--ink-3);background:var(--surface-2);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+footer{margin-top:56px;padding-block:28px 48px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3)}
+footer p{margin:0 0 6px}
+
+/* ---- 주차 목록 ---- */
+.latest{display:block;margin:24px 0 8px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow);color:var(--ink);cursor:pointer}
+.latest:hover{border-color:var(--accent)}
+.latest .lt-badge{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:2px 10px;border-radius:999px}
+.latest h2{font-size:22px;margin:10px 0 2px}
+.latest .lt-range{color:var(--ink-3);font-size:14px}
+.latest .lt-trend{margin:12px 0 0;color:var(--ink-2)}
+.lt-meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:14px;color:var(--ink-2)}
+.lt-meta b{color:var(--ink);font-variant-numeric:tabular-nums}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:32px 0 8px}
+.filters button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);padding:4px 12px;border-radius:999px;cursor:pointer}
+.filters button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.month{font-size:14px;font-weight:700;color:var(--ink-3);margin:26px 0 10px}
+.wk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.wk{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);color:var(--ink);cursor:pointer}
+.wk:hover{border-color:var(--accent)}
+.wk .no{font-size:12px;font-weight:700;color:var(--accent)}
+.wk h3{font-size:17px;margin:4px 0 2px}
+.wk .rg{font-size:13px;color:var(--ink-3)}
+.wk ul{margin:10px 0 0;padding-left:18px;font-size:14px;color:var(--ink-2)}
+.wk-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:12px}
+.wk-tag{font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--surface-2);color:var(--ink-2)}
+
+/* ---- 주차 리포트 (reports/*.html 본문을 그대로 넣음) ---- */
+.back{display:inline-flex;gap:6px;align-items:center;margin-top:20px;font-size:14px;color:var(--ink-2);cursor:pointer;background:none;border:0;padding:0;font-family:inherit}
+#view-report .hero{padding-block:20px 24px}
+#view-report .hero.wrap,#view-report main.wrap{padding-left:0;padding-right:0}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+.kpi .v{font-size:26px;font-weight:700;letter-spacing:-.02em}
+.kpi .l{font-size:13px;color:var(--ink-2)}
+nav.toc{position:sticky;top:calc(var(--hdr) + env(safe-area-inset-top,0px));z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:4px;overflow-x:auto;padding:8px 0;scrollbar-width:none}
+nav.toc a{flex:none;color:var(--ink-2);font-size:14px;padding:6px 12px;border-radius:999px}
+nav.toc a:hover{background:var(--surface-2);color:var(--ink)}
+.trend{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 12px 12px 0;padding:14px 18px;margin:0 0 20px;font-weight:500}
+.picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.pick .co{font-size:13px;color:var(--ink-3)} .pick .why{font-size:14px;color:var(--ink-2);margin-top:6px}
+td.date{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink-2)} td.prod{font-weight:600} .na{color:var(--ink-3)}
+.ref{margin-top:20px} .ref ul{margin:0;padding-left:18px;font-size:14px;color:var(--ink-2)} .ref li{margin-bottom:4px}
+.cats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.cat .hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.cat .st{font-size:12px;color:var(--ink-3)} .cat.quiet{background:transparent;box-shadow:none;border-style:dashed} .cat p{font-size:14px;color:var(--ink-2)}
+.issues{display:grid;gap:12px}
+.issue .tag{font-size:12px;font-weight:600;color:var(--warn);background:var(--warn-soft);padding:2px 8px;border-radius:6px;margin-right:6px}
+.issue p{font-size:15px;margin:8px 0 0;color:var(--ink-2)}
+.stat{display:flex;gap:24px;flex-wrap:wrap;margin-top:12px}
+.stat div b{display:block;font-size:22px;letter-spacing:-.02em;color:var(--ink)} .stat div span{font-size:13px;color:var(--ink-3)}
+.checks{list-style:none;margin:0;padding:0}
+.checks li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+.checks li:last-child{border-bottom:0}
+.checks input{width:18px;height:18px;margin-top:4px;accent-color:var(--accent);flex:none}
+.checks label{cursor:pointer;font-size:15px}
+.checks input:checked + label{color:var(--ink-3);text-decoration:line-through}
+
+/* ---- 검색 트렌드 ---- */
+.callout{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 12px 12px 0;padding:14px 18px;margin:20px 0 0;max-width:80ch}
+.div-row{display:grid;grid-template-columns:var(--lw,84px) 1fr;align-items:center;gap:12px;height:38px}
+.div-row .lbl{font-size:14px;font-weight:600;text-align:right}
+.div-track{position:relative;height:100%}
+.div-zero{position:absolute;top:4px;bottom:4px;width:1px;background:var(--axis)}
+.div-bar{position:absolute;top:11px;height:16px;background:var(--up);border-radius:0 4px 4px 0}
+.div-bar.neg{background:var(--down);border-radius:4px 0 0 4px}
+.div-val{position:absolute;top:7px;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink-2);white-space:nowrap}
+.div-hit{position:absolute;inset:0}
+.div-axis{display:grid;grid-template-columns:var(--lw,84px) 1fr;gap:12px;font-size:12px;color:var(--ink-3)}
+.div-axis .t{position:relative;height:18px} .div-axis .t span{position:absolute;transform:translateX(-50%);font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-2);margin-top:12px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.sm{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
+.sm .card{padding:16px 18px 10px}
+.sm-hd{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.sm-hd h3{margin:0;font-size:16px} .sm-hd .big{font-size:22px;font-weight:700;letter-spacing:-.02em}
+.delta{font-size:13px;font-weight:600;white-space:nowrap}
+.delta.up{color:var(--up-ink)} .delta.down{color:var(--down-ink)} .delta.flat{color:var(--ink-3)}
+.sm-meta{font-size:12px;color:var(--ink-3)}
+.sm svg{display:block;width:100%;height:120px;overflow:visible;margin-top:6px}
+.kw{font-size:12px;color:var(--ink-3);margin-top:6px}
+#tbl th,#tbl td{text-align:right;font-variant-numeric:tabular-nums} #tbl th:first-child,#tbl td:first-child{text-align:left}
+details summary{cursor:pointer;color:var(--ink-2);font-size:14px;margin-bottom:10px}
+.dd{margin-bottom:16px}
+.dd-hd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.dd-hd h3{margin:0;font-size:19px}
+.dd-badge{font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px}
+.dd-badge.up{color:var(--up-ink);background:color-mix(in srgb,var(--up) 14%,transparent)}
+.dd-badge.down{color:var(--down-ink);background:color-mix(in srgb,var(--down) 14%,transparent)}
+.dd-head{font-size:16px;font-weight:600;margin:6px 0 16px}
+.dd-charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px 28px}
+.mini{min-width:0} .mini h4{font-size:13px;color:var(--ink-2);margin:0 0 6px;font-weight:600}
+.mini .div-row{height:30px} .mini .div-row .lbl{font-size:12.5px;font-weight:500;color:var(--ink-2)}
+.mini .div-bar{top:8px;height:14px} .mini .div-val{top:4px;font-size:12px} .mini .div-axis{font-size:11px}
+.mini .fn{font-size:12px;color:var(--ink-3);margin-top:4px}
+.dd-find{margin:18px 0 0;padding-left:18px;font-size:15px;max-width:80ch} .dd-find li{margin-bottom:6px}
+.dd-src{margin-top:12px;font-size:13px;color:var(--ink-3)} .dd-src ul{margin:4px 0 0;padding-left:18px}
+.caveat{font-size:13px;color:var(--ink-3);padding-left:18px;margin:4px 0 0}
+.tip{position:fixed;z-index:20;pointer-events:none;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:12px;line-height:1.5;box-shadow:0 4px 16px rgba(0,0,0,.12);opacity:0;min-width:120px;left:0;top:0}
+.tip .k{color:var(--ink-3)}
+@media (max-width:720px){
+  .kpis{grid-template-columns:repeat(2,1fr)} .cats{grid-template-columns:1fr}
+  .div-row,.div-axis{--lw:64px} .navr .pill{padding:4px 10px}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+
+<header class="top"><div class="wrap">
+  <span class="brand" data-go="archive" role="link" tabindex="0">건기식 <span>위클리</span></span>
+  <nav class="navr" aria-label="화면 전환">
+    <button class="pill" type="button" data-go="archive" id="nav-archive">주간 리포트</button>
+    <button class="pill" type="button" data-go="trends" id="nav-trends">검색 트렌드</button>
+  </nav>
+</div></header>
+
+<!-- 1. 주차 목록 -->
+<div class="view wrap" id="view-archive">
+  <div class="hero">
+    <div class="eyebrow">KOREA HEALTH FUNCTIONAL FOOD · WEEKLY</div>
+    <h1>주간 건강식품 신제품 리포트</h1>
+    <p class="lead">매주 월~일 국내에서 출시·보도된 건강기능식품 신제품과 규제·시장 이슈를 정리합니다. 주차를 누르면 지난 리포트를 볼 수 있습니다.</p>
+    <div id="latest"></div>
+  </div>
+  <div class="filters" id="filters"></div>
+  <div id="weekList"></div>
+</div>
+
+<!-- 2. 주차 리포트 -->
+<div class="view wrap" id="view-report" hidden>
+  <button class="back" type="button" data-go="archive">← 전체 주차</button>
+  <div id="reportBody"></div>
+</div>
+
+<!-- 3. 검색 트렌드 + 심층 분석 -->
+<div class="view wrap" id="view-trends" hidden>
+  <div class="hero">
+    <div class="eyebrow">NAVER DATALAB · SEARCH TREND</div>
+    <h1>건기식 카테고리 검색 트렌드</h1>
+    <p class="lead" id="period"></p>
+    <p class="note">네이버 검색량을 0~100 상대지수로 받은 뒤, 모든 요청에 '비타민' 기준 그룹을 넣어 카테고리끼리 같은 척도로 맞췄습니다.</p>
+    <div class="callout" id="callout"></div>
+  </div>
+  <section>
+    <h2>관심 점유율 변화 (최근 12주, 전년 대비)</h2>
+    <p class="sub">카테고리 검색량 ÷ 비타민 검색량. 네이버 검색 전체가 줄거나 늘어난 효과를 걷어낸 값입니다. 0보다 크면 다른 건기식보다 관심이 커졌다는 뜻입니다.</p>
+    <div class="card"><div id="divChart"></div>
+      <div class="legend"><span><i style="background:var(--up)"></i>점유율 상승</span><span><i style="background:var(--down)"></i>점유율 하락</span></div></div>
+  </section>
+  <section>
+    <h2>카테고리별 2년 추이</h2>
+    <p class="sub">선은 주간 관심 점유율(비타민=100), 점선은 1년 전 시점입니다. 큰 숫자는 최근 12주 평균입니다. 선 위에 마우스를 올리면 주별 값이 보입니다.</p>
+    <div class="sm" id="sm"></div>
+  </section>
+  <section id="deep">
+    <h2>심층 분석: 점유율이 가장 오른 곳과 가장 내린 곳</h2>
+    <p class="sub" id="deepSub"></p>
+    <div id="deepBody"></div>
+  </section>
+  <section>
+    <h2>표로 보기</h2>
+    <div class="tbl-wrap"><table id="tbl"></table></div>
+    <p class="note">검색지수는 기준 그룹으로 환산한 값이라 100을 넘을 수 있습니다. 주간 값은 연휴(추석, 한글날 등) 영향을 크게 받으니 4주·12주 비교를 우선 보세요.</p>
+  </section>
+  <section>
+    <details><summary>카테고리별 키워드 그룹과 계산 방법</summary><div class="card"><ul id="method"></ul></div></details>
+  </section>
+</div>
+
+<footer><div class="wrap">
+  <p>신제품 표의 날짜·성분·가격은 각 주차 리포트에 링크된 원문 기사 기준입니다. 검색 트렌드 출처: 네이버 데이터랩(NAVER API HUB). 검색 관심도는 판매량이 아닙니다.</p>
+  <p id="builtAt"></p>
+</div></footer>
+
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+
+<script type="application/json" id="data-weeks">__WEEKS__</script>
+<script type="application/json" id="data-reports">__REPORTS__</script>
+<script type="application/json" id="data-trend">__TREND__</script>
+<script type="application/json" id="data-deep">__DEEP__</script>
+<script type="application/json" id="data-meta">__META__</script>
+
+<script>
+(function(){
+  function J(id){try{return JSON.parse(document.getElementById(id).textContent)}catch(e){return null}}
+  var WEEKS=(J('data-weeks')||[]).sort(function(a,b){return a.start<b.start?1:-1}), REPORTS=J('data-reports')||{}, TREND=J('data-trend'), DEEP=J('data-deep'), META=J('data-meta')||{};
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function md(d){var p=d.split('-');return (+p[1])+'월 '+(+p[2])+'일'}
+  function mdot(d){var p=d.split('-');return (+p[0])+'.'+(+p[1])+'.'+(+p[2])}
+  function wkNo(id){var m=/W(\d+)/.exec(id);return m?(+m[1])+'주차':id}
+  function sgn(x){return x==null?'–':(x>0?'+':'')+x.toFixed(1)+'%'}
+  if(META.builtAt) document.getElementById('builtAt').textContent='마지막 갱신 '+META.builtAt;
+
+  // ---------- 라우팅: #trends, #w-2026-W41, 그 외는 목록 ----------
+  var views={archive:'view-archive',report:'view-report',trends:'view-trends'}, trendsDrawn=false;
+  function show(name,arg){
+    Object.keys(views).forEach(function(k){document.getElementById(views[k]).hidden=k!==name});
+    document.getElementById('nav-archive').classList.toggle('on',name!=='trends');
+    document.getElementById('nav-trends').classList.toggle('on',name==='trends');
+    if(name==='report') renderReport(arg);
+    if(name==='trends' && !trendsDrawn){ trendsDrawn=true; renderTrends(); renderDeep(); }
+    scrollTo(0,0);
+  }
+  function route(){
+    var h=location.hash.slice(1);
+    if(h==='trends') return show('trends');
+    if(h.indexOf('w-')===0 && REPORTS[h.slice(2)]) return show('report',h.slice(2));
+    if(h===''||h==='archive') return show('archive');
+    // 리포트 안의 목차 앵커(#summary 등)는 화면을 바꾸지 않는다
+  }
+  function go(name,arg){
+    var h=name==='trends'?'trends':name==='report'?'w-'+arg:'archive';
+    if(location.hash.slice(1)===h) route(); else location.hash=h;
+    if(location.hash.slice(1)!==h) show(name,arg); // 해시가 막힌 환경 대비
+  }
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('[data-go]'); if(!t) return;
+    e.preventDefault(); go(t.dataset.go,t.dataset.arg);
+  });
+  document.addEventListener('keydown',function(e){var t=e.target.closest&&e.target.closest('[data-go]');if(t&&(e.key==='Enter'||e.key===' ')){e.preventDefault();go(t.dataset.go,t.dataset.arg)}});
+  addEventListener('hashchange',route);
+
+  // ---------- 1. 주차 목록 ----------
+  function range(w){return md(w.start)+' ~ '+md(w.end)}
+  var latest=WEEKS[0];
+  if(latest){
+    document.getElementById('latest').innerHTML='<div class="latest" data-go="report" data-arg="'+esc(latest.id)+'" role="link" tabindex="0">'+
+      '<span class="lt-badge">최신 · '+esc(latest.start.slice(0,4))+'년 '+esc(wkNo(latest.id))+'</span>'+
+      '<h2>'+esc(range(latest))+' 리포트</h2><div class="lt-range">발행 '+esc(latest.published)+'</div>'+
+      '<p class="lt-trend">'+esc(latest.trend)+'</p>'+
+      '<div class="lt-meta"><span>신제품 <b>'+latest.products+'</b>개</span><span>기업 <b>'+latest.companies+'</b>곳</span><span>'+esc(latest.categories.join(' · '))+'</span></div></div>';
+  }
+  var cats=[]; WEEKS.forEach(function(w){(w.categories||[]).forEach(function(c){if(cats.indexOf(c)<0)cats.push(c)})});
+  var active='전체', F=document.getElementById('filters');
+  ['전체'].concat(cats).forEach(function(c){
+    var b=document.createElement('button'); b.type='button'; b.textContent=c; if(c===active)b.className='on';
+    b.onclick=function(){active=c;[].forEach.call(F.children,function(x){x.className=x===b?'on':''});renderList()};
+    F.appendChild(b);
+  });
+  function renderList(){
+    var html='',last='';
+    var shown=WEEKS.filter(function(w){return active==='전체'||(w.categories||[]).indexOf(active)>=0});
+    shown.forEach(function(w){
+      var m=w.start.slice(0,4)+'년 '+(+w.start.slice(5,7))+'월';
+      if(m!==last){ if(last) html+='</div>'; html+='<div class="month">'+m+'</div><div class="wk-grid">'; last=m; }
+      html+='<div class="wk" data-go="report" data-arg="'+esc(w.id)+'" role="link" tabindex="0"><span class="no">'+esc(wkNo(w.id))+'</span><h3>'+esc(range(w))+'</h3>'+
+        '<span class="rg">신제품 '+w.products+'개 · 발행 '+esc(w.published)+'</span><ul>'+(w.highlights||[]).map(function(h){return '<li>'+esc(h)+'</li>'}).join('')+'</ul>'+
+        '<div class="wk-tags">'+(w.categories||[]).map(function(c){return '<span class="wk-tag">'+esc(c)+'</span>'}).join('')+'</div></div>';
+    });
+    document.getElementById('weekList').innerHTML=shown.length?html+'</div>':'<p class="note">해당 카테고리 리포트가 없습니다.</p>';
+  }
+  renderList();
+
+  // ---------- 2. 주차 리포트 ----------
+  function renderReport(id){
+    var box=document.getElementById('reportBody'); box.innerHTML=REPORTS[id]||'<p class="note">리포트가 없습니다.</p>';
+    box.querySelectorAll('a[href^="http"]').forEach(function(a){a.target='_blank';a.rel='noopener'});
+    var CK='hf-checks-'+id, st={}; try{st=JSON.parse(get(CK)||'{}')||{}}catch(e){}
+    box.querySelectorAll('.checks input').forEach(function(cb){cb.checked=!!st[cb.id];cb.addEventListener('change',function(){st[cb.id]=cb.checked;set(CK,JSON.stringify(st))})});
+    box.querySelectorAll('nav.toc a').forEach(function(a){a.addEventListener('click',function(e){var t=box.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}})});
+  }
+
+  // ---------- 툴팁 ----------
+  var tip=document.getElementById('tip');
+  function showTip(html,x,y){tip.innerHTML=html;tip.style.opacity=1;var w=tip.offsetWidth,h=tip.offsetHeight,px=x+14,py=y-h-10;if(px+w>innerWidth-8)px=x-w-14;if(py<8)py=y+14;tip.style.left=px+'px';tip.style.top=py+'px'}
+  function hideTip(){tip.style.opacity=0}
+
+  // 0을 가운데 둔 가로 막대. 양수=파랑, 음수=빨강. 음수 라벨은 0선 오른쪽에 둬서 행 이름과 겹치지 않게 한다.
+  function divBars(rows){
+    var mx=Math.max.apply(null,rows.map(function(r){return Math.abs(r.value)}));
+    var m=Math.max(5,Math.ceil(mx*1.3/5)*5), pos=function(v){return (v+m)/(2*m)*100}, h='';
+    rows.forEach(function(r,i){
+      var v=r.value,z=pos(0),x=pos(v),neg=v<0,left=Math.min(z,x),w=Math.abs(x-z);
+      h+='<div class="div-row"><div class="lbl">'+esc(r.label)+'</div><div class="div-track"><div class="div-zero" style="left:'+z+'%"></div>'+
+        '<div class="div-bar'+(neg?' neg':'')+'" style="left:'+left+'%;width:'+w+'%"></div>'+
+        '<div class="div-val" style="left:calc('+(neg?z:left+w)+'% + 5px)">'+sgn(v)+'</div><div class="div-hit" data-i="'+i+'"></div></div></div>';
+    });
+    return h+'<div class="div-axis"><div></div><div class="t">'+[-m,0,m].map(function(t){return '<span style="left:'+pos(t)+'%">'+(t>0?'+':'')+t+'%</span>'}).join('')+'</div></div>';
+  }
+  function bindTips(container,rows,title){
+    container.querySelectorAll('.div-hit').forEach(function(hit){
+      var r=rows[+hit.dataset.i];
+      hit.addEventListener('mousemove',function(e){showTip('<b>'+esc(r.label)+'</b>'+(title?'<br><span class="k">'+esc(title)+'</span>':'')+'<br><b>'+sgn(r.value)+'</b>'+(r.note?'<br><span class="k">'+esc(r.note)+'</span>':''),e.clientX,e.clientY)});
+      hit.addEventListener('mouseleave',hideTip);
+    });
+  }
+
+  // ---------- 3. 검색 트렌드 ----------
+  function renderTrends(){
+    var d=TREND; if(!d){document.getElementById('period').textContent='트렌드 데이터가 없습니다.';return}
+    var A=d.anchor.groupName, anchor=d.series[A].map(function(p){return p.value});
+    document.getElementById('period').textContent='기간 '+mdot(d.startDate)+' ~ '+mdot(d.endDate)+' (주간 104주) · 최신 주차 '+mdot(d.summary[0].week)+' 시작 주';
+    var sorted=d.summary.slice().sort(function(a,b){return b.shareYoy12w-a.shareYoy12w});
+    var ups=sorted.filter(function(s){return s.shareYoy12w>=1}).map(function(s){return s.category+' '+sgn(s.shareYoy12w)});
+    var downs=sorted.filter(function(s){return s.shareYoy12w<=-1}).reverse().map(function(s){return s.category+' '+sgn(s.shareYoy12w)});
+    document.getElementById('callout').innerHTML='비타민 기준 검색량은 최근 12주 평균이 전년보다 <b>'+sgn(d.anchorYoy12w)+'</b>입니다. 네이버 건기식 검색 전체가 줄었다는 뜻이라 원지수만 보면 모든 카테고리가 떨어져 보입니다. 점유율로 보면 '+
+      (ups.length?'<b>'+esc(ups.join(', '))+'</b>는 상대적으로 관심이 커졌고, ':'')+(downs.length?'<b>'+esc(downs.join(', '))+'</b>는 관심이 줄었습니다.':'');
+    var rows=sorted.map(function(s){return {label:s.category,value:s.shareYoy12w,note:'검색량 전년비(12주) '+sgn(s.yoy12w)+' · 점유율 '+s.share12w.toFixed(1)}});
+    var dc=document.getElementById('divChart'); dc.innerHTML=divBars(rows); bindTips(dc,rows,'점유율 전년비');
+
+    var sm=document.getElementById('sm');
+    d.summary.slice().sort(function(a,b){return b.share12w-a.share12w}).forEach(function(s){
+      var raw=d.series[s.category], share=raw.map(function(p,i){return anchor[i]?p.value/anchor[i]*100:null});
+      var kw=(d.categories.filter(function(c){return c.groupName===s.category})[0]||{}).keywords||[];
+      var cls=s.shareYoy12w==null||Math.abs(s.shareYoy12w)<1?'flat':(s.shareYoy12w>0?'up':'down');
+      var card=document.createElement('div'); card.className='card';
+      card.innerHTML='<div class="sm-hd"><h3>'+esc(s.category)+'</h3><span class="delta '+cls+'">'+(cls==='up'?'▲':cls==='down'?'▼':'→')+' 점유율 '+sgn(s.shareYoy12w)+'</span></div>'+
+        '<div class="sm-hd"><span class="big">'+s.share12w.toFixed(1)+'</span><span class="sm-meta">검색량 전년비 '+sgn(s.yoy12w)+' · 전주비 '+sgn(s.wow)+'</span></div>'+
+        '<svg role="img" aria-label="'+esc(s.category)+' 주간 관심 점유율 추이"></svg><div class="kw">'+esc(kw.join(', '))+'</div>';
+      sm.appendChild(card); drawLine(card.querySelector('svg'),raw,share);
+    });
+
+    var t='<thead><tr><th>카테고리</th><th>최신 주 검색지수</th><th>전주비</th><th>4주 평균 대비</th><th>검색량 전년비(4주)</th><th>검색량 전년비(12주)</th><th>점유율(12주)</th><th>점유율 전년비</th></tr></thead><tbody>';
+    sorted.forEach(function(s){t+='<tr><td>'+esc(s.category)+'</td><td>'+s.value.toFixed(1)+'</td><td>'+sgn(s.wow)+'</td><td>'+sgn(s.vs4wAvg)+'</td><td>'+sgn(s.yoy4w)+'</td><td>'+sgn(s.yoy12w)+'</td><td>'+s.share12w.toFixed(1)+'</td><td>'+sgn(s.shareYoy12w)+'</td></tr>'});
+    t+='<tr><td>기준: 비타민</td><td>'+anchor[anchor.length-1].toFixed(1)+'</td><td></td><td></td><td></td><td>'+sgn(d.anchorYoy12w)+'</td><td>100.0</td><td>–</td></tr></tbody>';
+    document.getElementById('tbl').innerHTML=t;
+    document.getElementById('method').innerHTML=d.categories.map(function(c){return '<li><b>'+esc(c.groupName)+'</b>: '+esc(c.keywords.join(', '))+'</li>'}).join('')+
+      '<li><b>기준 그룹</b>: '+esc(d.anchor.keywords.join(', '))+'. 요청마다 함께 넣고, 첫 요청의 기준 그룹 합계에 맞춰 나머지 요청 값을 환산합니다.</li>'+
+      '<li>점유율 = 카테고리 ÷ 기준 그룹 × 100. 전년비는 최근 12주 평균과 52주 전 같은 12주 평균을 비교합니다.</li>';
+  }
+
+  function drawLine(svg,raw,share){
+    var W=svg.clientWidth||300,H=120,P={l:30,r:6,t:8,b:20},n=share.length;
+    var clean=share.filter(function(v){return v!=null}), mx=Math.max.apply(null,clean)*1.08;
+    var nice=mx>200?100:mx>80?50:mx>40?20:10, top=Math.ceil(mx/nice)*nice;
+    var X=function(i){return P.l+i/(n-1)*(W-P.l-P.r)}, Y=function(v){return P.t+(1-v/top)*(H-P.t-P.b)}, g='';
+    [0,top/2,top].forEach(function(t){g+='<line x1="'+P.l+'" x2="'+(W-P.r)+'" y1="'+Y(t)+'" y2="'+Y(t)+'" stroke="var(--'+(t===0?'axis':'grid')+')" stroke-width="1"/><text x="'+(P.l-6)+'" y="'+(Y(t)+4)+'" text-anchor="end" font-size="10" fill="var(--ink-3)">'+t+'</text>'});
+    var ly=n-53; if(ly>0) g+='<line x1="'+X(ly)+'" x2="'+X(ly)+'" y1="'+P.t+'" y2="'+(H-P.b)+'" stroke="var(--ref)" stroke-width="1" stroke-dasharray="3 3"/>';
+    var seen={}; raw.forEach(function(p,i){var y=p.period.slice(0,4);if(p.period.slice(5,7)==='01'&&!seen[y]){seen[y]=1;g+='<text x="'+X(i)+'" y="'+(H-4)+'" text-anchor="middle" font-size="10" fill="var(--ink-3)">'+y+'</text>'}});
+    var path=''; share.forEach(function(v,i){if(v==null)return;path+=(path?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1)});
+    g+='<path d="'+path+'" fill="none" stroke="var(--up)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
+    g+='<circle cx="'+X(n-1)+'" cy="'+Y(share[n-1])+'" r="4" fill="var(--up)" stroke="var(--surface)" stroke-width="2"/>';
+    g+='<line class="xh" y1="'+P.t+'" y2="'+(H-P.b)+'" stroke="var(--ink-3)" stroke-width="1" opacity="0"/><circle class="xd" r="4" fill="var(--up)" stroke="var(--surface)" stroke-width="2" opacity="0"/>';
+    g+='<rect x="'+P.l+'" y="0" width="'+(W-P.l-P.r)+'" height="'+H+'" fill="transparent"/>';
+    svg.setAttribute('viewBox','0 0 '+W+' '+H); svg.innerHTML=g;
+    var xh=svg.querySelector('.xh'), xd=svg.querySelector('.xd');
+    svg.addEventListener('mousemove',function(e){
+      var r=svg.getBoundingClientRect(), px=(e.clientX-r.left)*(W/r.width), i=Math.round((px-P.l)/(W-P.l-P.r)*(n-1)); i=Math.max(0,Math.min(n-1,i)); if(share[i]==null)return;
+      xh.setAttribute('x1',X(i));xh.setAttribute('x2',X(i));xh.setAttribute('opacity',1);xd.setAttribute('cx',X(i));xd.setAttribute('cy',Y(share[i]));xd.setAttribute('opacity',1);
+      showTip('<b>'+mdot(raw[i].period)+' 주</b><br><span class="k">점유율</span> <b>'+share[i].toFixed(1)+'</b><br><span class="k">검색지수</span> <b>'+raw[i].value.toFixed(1)+'</b>',e.clientX,e.clientY);
+    });
+    svg.addEventListener('mouseleave',function(){xh.setAttribute('opacity',0);xd.setAttribute('opacity',0);hideTip()});
+  }
+
+  // ---------- 심층 분석 ----------
+  function renderDeep(){
+    var d=DEEP, body=document.getElementById('deepBody');
+    if(!d){document.getElementById('deep').hidden=true;return}
+    document.getElementById('deepSub').textContent='키워드별·연령별 검색과 네이버쇼핑 클릭 데이터로 원인을 분해했습니다. 비교 구간: '+d.window+'.';
+    var html='';
+    d.categories.forEach(function(c,ci){
+      html+='<div class="card dd"><div class="dd-hd"><h3>'+esc(c.name)+'</h3><span class="dd-badge '+(c.direction==='up'?'up':'down')+'">'+(c.direction==='up'?'▲ 점유율 최대 상승':'▼ 점유율 최대 하락')+'</span></div><p class="dd-head">'+esc(c.headline)+'</p><div class="dd-charts">';
+      c.charts.forEach(function(ch,k){
+        var lw=Math.max.apply(null,ch.rows.map(function(r){return r.label.length}))>7?'118px':'84px';
+        html+='<div class="mini" style="--lw:'+lw+'" data-c="'+ci+'" data-k="'+k+'"><h4>'+esc(ch.title)+'</h4>'+divBars(ch.rows)+(ch.footnote?'<div class="fn">'+esc(ch.footnote)+'</div>':'')+'</div>';
+      });
+      html+='</div><ul class="dd-find">'+c.findings.map(function(f){return '<li>'+esc(f)+'</li>'}).join('')+'</ul><div class="dd-src">근거 자료<ul>'+
+        c.sources.map(function(s){return '<li><a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.label)+'</a></li>'}).join('')+'</ul></div></div>';
+    });
+    body.innerHTML=html+'<ul class="caveat">'+d.caveats.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>';
+    body.querySelectorAll('.mini').forEach(function(el){var ch=d.categories[+el.dataset.c].charts[+el.dataset.k];bindTips(el,ch.rows,ch.title)});
+  }
+
+  route();
+})();
+</script>
